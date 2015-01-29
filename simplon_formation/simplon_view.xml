@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_simplon_formation_tree" model="ir.ui.view">
+            <field name="name">simplon.formation.tree</field>
+            <field name="model">simplon.formation</field>
+            <field name="arch" type="xml">
+                <tree string="Formations">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_simplon_formation_form" model="ir.ui.view">
+            <field name="name">simplon.formation.form</field>
+            <field name="model">simplon.formation</field>
+            <field name="arch" type="xml">
+                <form string="Formation" version="7.0">
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <menuitem id="menu_simplon" name="Simplon" sequence="40"/>
+        <menuitem id="menu_simplon_formation" name="Formation" parent="menu_simplon"/>
+
+        <record id="view_simplon_formation_search" model="ir.ui.view">
+            <field name="name">simplon.formation.search</field>
+            <field name="model">simplon.formation</field>
+            <field name="arch" type="xml">
+               <search string="Formation">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="act_simplon_formation_all" model="ir.actions.act_window">
+            <field name="name">Formation</field>
+            <field name="res_model">simplon.formation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="view_simplon_formation_search"/>
+        </record>
+
+        <menuitem action="act_simplon_formation_all" id="menu_simplon_formation_all" parent="menu_simplon_formation"/>
+
+    </data>
+</openerp>
